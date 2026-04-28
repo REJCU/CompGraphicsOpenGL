@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/ShaderStudy.dir/link.d CMakeFiles/ShaderStudy.dir/src/main.c.o CMakeFiles/ShaderStudy.dir/src/glad.c.o -o ShaderStudy  external/glfw/src/libglfw3.a /usr/lib/libOpenGL.so /usr/lib/libGLX.so /usr/lib/libGLU.so /usr/lib/librt.a -lm -ldl

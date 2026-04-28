@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/rye/c_projects/simpleShaders/build/cmake_install.cmake",
+		"/home/rye/c_projects/simpleShaders/build/external/glfw/cmake_install.cmake",
+		"/home/rye/c_projects/simpleShaders/build/external/glfw/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
