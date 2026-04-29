@@ -41,3 +41,9 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     glfw 
     ${OPENGL_LIBRARIES}
 )
+
+# Create a link to the shaders folder in the build directory
+add_custom_command(TARGET ShaderStudy POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E create_symlink
+    ${CMAKE_CURRENT_SOURCE_DIR}/shaders
+    ${CMAKE_CURRENT_BINARY_DIR}/shaders)
