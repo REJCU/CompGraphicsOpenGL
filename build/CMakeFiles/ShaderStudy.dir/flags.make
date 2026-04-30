@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/rye/c_projects/simpleShaders/include -I/home/rye/c_projects/simpleShaders/external/glfw/include
+C_INCLUDES = -I/home/rye/c_projects/simpleShaders/include -I/home/rye/c_projects/simpleShaders/external/glfw/include -I/home/rye/c_projects/simpleShaders/textures
 
 C_FLAGS = -std=gnu11
 

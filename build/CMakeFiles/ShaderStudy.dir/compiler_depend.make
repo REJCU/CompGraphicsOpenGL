@@ -72,17 +72,32 @@ CMakeFiles/ShaderStudy.dir/src/glad.c.o: /home/rye/c_projects/simpleShaders/src/
 
 CMakeFiles/ShaderStudy.dir/src/main.c.o: /home/rye/c_projects/simpleShaders/src/main.c \
   /home/rye/c_projects/simpleShaders/external/glfw/include/GLFW/glfw3.h \
+  /home/rye/c_projects/simpleShaders/textures/stb_image.h \
   /home/rye/c_projects/simpleShaders/include/glad/glad.h \
   /usr/include/KHR/khrplatform.h \
   /usr/include/alloca.h \
+  /usr/include/assert.h \
   /usr/include/bits/atomic_wide_counter.h \
   /usr/include/bits/byteswap.h \
   /usr/include/bits/endian.h \
   /usr/include/bits/endianness.h \
   /usr/include/bits/floatn-common.h \
   /usr/include/bits/floatn.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/fp-logb.h \
   /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
+  /usr/include/bits/local_lim.h \
   /usr/include/bits/long-double.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls-macros.h \
+  /usr/include/bits/mathcalls.h \
+  /usr/include/bits/posix1_lim.h \
+  /usr/include/bits/posix2_lim.h \
+  /usr/include/bits/pthread_stack_min-dynamic.h \
+  /usr/include/bits/pthread_stack_min.h \
   /usr/include/bits/pthreadtypes-arch.h \
   /usr/include/bits/pthreadtypes.h \
   /usr/include/bits/select.h \
@@ -101,11 +116,13 @@ CMakeFiles/ShaderStudy.dir/src/main.c.o: /home/rye/c_projects/simpleShaders/src/
   /usr/include/bits/types/__FILE.h \
   /usr/include/bits/types/__fpos64_t.h \
   /usr/include/bits/types/__fpos_t.h \
+  /usr/include/bits/types/__locale_t.h \
   /usr/include/bits/types/__mbstate_t.h \
   /usr/include/bits/types/__sigset_t.h \
   /usr/include/bits/types/clock_t.h \
   /usr/include/bits/types/clockid_t.h \
   /usr/include/bits/types/cookie_io_functions_t.h \
+  /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/sigset_t.h \
   /usr/include/bits/types/struct_FILE.h \
   /usr/include/bits/types/struct_timespec.h \
@@ -123,16 +140,27 @@ CMakeFiles/ShaderStudy.dir/src/main.c.o: /home/rye/c_projects/simpleShaders/src/
   /usr/include/features.h \
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
+  /usr/include/limits.h \
+  /usr/include/linux/limits.h \
+  /usr/include/math.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdint.h \
   /usr/include/stdio.h \
   /usr/include/stdlib.h \
+  /usr/include/string.h \
+  /usr/include/strings.h \
   /usr/include/sys/cdefs.h \
   /usr/include/sys/select.h \
   /usr/include/sys/types.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/emmintrin.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/mm_malloc.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/mmintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h \
-  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/xmmintrin.h
 
 ShaderStudy: /usr/lib/Scrt1.o \
   /usr/lib/crti.o \
@@ -171,212 +199,260 @@ ShaderStudy: /usr/lib/Scrt1.o \
   external/glfw/src/libglfw3.a
 
 
-CMakeFiles/ShaderStudy.dir/src/glad.c.o:
-
-/usr/lib32/libstdc++.so.6:
-
-/usr/lib32/libX11.so.6:
-
-/usr/lib32/libGLdispatch.so.0:
-
-/usr/lib/libxcb.so.1:
-
-/usr/lib/libstdc++.so.6:
-
-/usr/lib/librt.a:
-
-/usr/lib/libmvec.so.1:
-
-/usr/lib/libc.so.6:
-
-/usr/lib/libXdmcp.so.6:
-
-/usr/lib/libX11.so.6:
-
-/usr/lib/libGLdispatch.so.0:
-
-/usr/lib/libGLU.so:
-
-/usr/lib/ld-linux-x86-64.so.2:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o:
-
-/usr/lib/libm.so:
-
-/usr/lib/libgcc_s.so.1:
-
-/usr/lib/libgcc_s.so:
-
-/usr/lib/libc.so:
-
-/usr/lib/libOpenGL.so:
-
-/usr/lib/crtn.o:
-
-/usr/lib/crti.o:
-
-/usr/lib/Scrt1.o:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/libgcc.a:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h:
-
-/usr/include/sys/types.h:
-
-/usr/lib/libm.so.6:
-
-/usr/include/sys/select.h:
-
-/usr/include/sys/cdefs.h:
-
-/usr/include/strings.h:
-
-/usr/include/stdlib.h:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o:
-
-/usr/include/bits/types/FILE.h:
-
-/home/rye/c_projects/simpleShaders/include/glad/glad.h:
-
-/usr/include/string.h:
-
-/usr/include/bits/time64.h:
-
-/home/rye/c_projects/simpleShaders/src/main.c:
-
-/usr/include/bits/byteswap.h:
-
-/usr/include/bits/thread-shared-types.h:
-
-/usr/include/bits/wchar.h:
-
-/usr/include/bits/stdint-least.h:
-
-/usr/include/alloca.h:
-
-/usr/include/bits/stdint-intn.h:
-
-/usr/include/bits/struct_mutex.h:
-
-/usr/include/gnu/stubs-64.h:
-
-/usr/include/bits/select.h:
-
-/usr/include/bits/types/__fpos64_t.h:
-
-/usr/include/features-time64.h:
-
-/usr/include/stdc-predef.h:
-
-/usr/include/bits/pthreadtypes-arch.h:
-
-/usr/include/bits/libc-header-start.h:
-
-/usr/include/bits/timesize.h:
-
-/usr/include/bits/endian.h:
-
-/usr/include/bits/types/__sigset_t.h:
-
-/usr/include/bits/waitflags.h:
-
-/usr/lib/libc_nonshared.a:
-
-/usr/include/bits/types.h:
-
-/usr/lib/libGLX.so:
-
-/usr/include/bits/atomic_wide_counter.h:
-
-/usr/include/bits/types/clockid_t.h:
-
-/usr/include/bits/dlfcn.h:
-
-/usr/include/bits/endianness.h:
-
-/usr/include/bits/types/__FILE.h:
-
-/usr/include/KHR/khrplatform.h:
-
-/usr/include/bits/stdlib-float.h:
-
-external/glfw/src/libglfw3.a:
-
-/usr/include/bits/types/sigset_t.h:
-
-/usr/include/bits/floatn-common.h:
-
-/usr/include/bits/long-double.h:
-
-/usr/include/bits/pthreadtypes.h:
-
-/usr/include/bits/floatn.h:
-
-/usr/include/bits/types/__fpos_t.h:
-
 CMakeFiles/ShaderStudy.dir/src/main.c.o:
 
-/usr/include/bits/wordsize.h:
-
-/usr/include/bits/types/__locale_t.h:
-
-/usr/include/bits/types/__mbstate_t.h:
-
-/usr/include/bits/types/clock_t.h:
-
-/usr/include/bits/uintn-identity.h:
-
-/usr/include/bits/typesizes.h:
-
-/usr/lib/libdl.a:
-
-/usr/include/bits/types/locale_t.h:
-
-/usr/lib32/libxcb.so.1:
-
-/usr/include/bits/types/struct_FILE.h:
-
-/usr/include/bits/types/struct_timespec.h:
-
-/usr/lib32/libXdmcp.so.6:
-
-/usr/include/bits/stdio_lim.h:
-
-/usr/include/bits/types/struct_timeval.h:
-
-/home/rye/c_projects/simpleShaders/external/glfw/include/GLFW/glfw3.h:
-
-/usr/include/bits/struct_rwlock.h:
-
-/usr/include/bits/types/time_t.h:
-
-/usr/include/bits/stdint-uintn.h:
-
-/usr/include/bits/types/cookie_io_functions_t.h:
-
-/usr/include/endian.h:
-
-/usr/lib32/libXau.so.6:
-
-/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h:
-
-/usr/include/bits/waitstatus.h:
-
-/usr/lib/libXau.so.6:
-
-/usr/include/dlfcn.h:
-
-/usr/include/features.h:
+/usr/include/stdio.h:
 
 /home/rye/c_projects/simpleShaders/src/glad.c:
 
-/usr/include/gnu/stubs.h:
+/usr/include/math.h:
+
+/usr/include/dlfcn.h:
+
+/usr/lib32/libXau.so.6:
+
+/usr/include/endian.h:
+
+/usr/include/bits/types/cookie_io_functions_t.h:
+
+/usr/include/bits/stdint-uintn.h:
+
+/usr/include/bits/struct_rwlock.h:
+
+/home/rye/c_projects/simpleShaders/external/glfw/include/GLFW/glfw3.h:
+
+/usr/lib32/libXdmcp.so.6:
+
+/usr/include/bits/types/struct_timespec.h:
+
+/usr/include/bits/types/struct_FILE.h:
+
+/usr/lib32/libxcb.so.1:
+
+/usr/include/bits/types/locale_t.h:
+
+/usr/lib/libdl.a:
+
+/usr/lib/libXau.so.6:
+
+/usr/include/bits/uintn-identity.h:
 
 /usr/include/stdint.h:
 
+/usr/include/linux/limits.h:
+
+/usr/include/bits/stdio_lim.h:
+
+/usr/include/bits/types/__mbstate_t.h:
+
+/usr/include/bits/local_lim.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h:
+
+/usr/include/bits/math-vector.h:
+
+/usr/include/bits/floatn.h:
+
+/usr/include/bits/pthreadtypes.h:
+
+/usr/include/bits/long-double.h:
+
+/usr/include/bits/floatn-common.h:
+
+/usr/include/bits/types/sigset_t.h:
+
+/usr/include/KHR/khrplatform.h:
+
+/usr/include/bits/types/__FILE.h:
+
+external/glfw/src/libglfw3.a:
+
+/usr/include/features.h:
+
+/usr/include/bits/endianness.h:
+
+/usr/include/bits/dlfcn.h:
+
+/usr/include/bits/types/clockid_t.h:
+
+/usr/include/bits/atomic_wide_counter.h:
+
+/usr/lib/libGLX.so:
+
+/usr/include/bits/types.h:
+
+/usr/lib/libc_nonshared.a:
+
+/usr/include/bits/waitflags.h:
+
+/usr/include/bits/types/__sigset_t.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/bits/waitstatus.h:
+
+/usr/include/bits/timesize.h:
+
+/usr/include/bits/libc-header-start.h:
+
+/usr/include/bits/types/time_t.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/mm_malloc.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/bits/pthreadtypes-arch.h:
+
+/usr/include/stdc-predef.h:
+
+/usr/include/features-time64.h:
+
+/usr/include/bits/select.h:
+
+/usr/include/gnu/stubs-64.h:
+
+/usr/include/bits/struct_mutex.h:
+
+/usr/include/bits/stdint-intn.h:
+
+/usr/include/alloca.h:
+
+/usr/include/bits/stdint-least.h:
+
+/usr/include/bits/wchar.h:
+
+/usr/include/bits/thread-shared-types.h:
+
+/usr/include/bits/byteswap.h:
+
+/home/rye/c_projects/simpleShaders/src/main.c:
+
+/usr/include/bits/stdlib-float.h:
+
+/usr/include/bits/time64.h:
+
+/usr/include/bits/mathcalls-helper-functions.h:
+
+/usr/include/string.h:
+
+/usr/include/limits.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o:
+
+/usr/include/stdlib.h:
+
+/usr/include/strings.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/sys/select.h:
+
+/usr/lib/libm.so.6:
+
+/usr/include/sys/types.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/emmintrin.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/libgcc.a:
+
+/usr/include/bits/types/__locale_t.h:
+
+/home/rye/c_projects/simpleShaders/textures/stb_image.h:
+
+/usr/lib/ld-linux-x86-64.so.2:
+
+/usr/include/assert.h:
+
+/usr/include/bits/types/FILE.h:
+
+/usr/include/bits/flt-eval-method.h:
+
+/usr/include/bits/fp-fast.h:
+
+/usr/include/bits/posix1_lim.h:
+
+/usr/lib/libc.so:
+
+/usr/include/bits/fp-logb.h:
+
+/home/rye/c_projects/simpleShaders/include/glad/glad.h:
+
+/usr/include/bits/libm-simd-decl-stubs.h:
+
+/usr/lib32/libstdc++.so.6:
+
+/usr/include/bits/mathcalls-macros.h:
+
+/usr/include/bits/types/clock_t.h:
+
+/usr/include/bits/types/__fpos_t.h:
+
+/usr/include/bits/mathcalls.h:
+
+/usr/include/bits/posix2_lim.h:
+
+/usr/include/bits/pthread_stack_min-dynamic.h:
+
 /usr/include/bits/types/timer_t.h:
 
-/usr/include/stdio.h:
+/usr/lib/Scrt1.o:
+
+/usr/include/bits/pthread_stack_min.h:
+
+/usr/lib/librt.a:
+
+/usr/include/bits/types/struct_timeval.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h:
+
+/usr/lib/libmvec.so.1:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/xmmintrin.h:
+
+/usr/lib/libGLU.so:
+
+/usr/include/bits/typesizes.h:
+
+/usr/lib/crti.o:
+
+/usr/lib/crtn.o:
+
+/usr/lib/libOpenGL.so:
+
+/usr/lib/libxcb.so.1:
+
+/usr/lib/libgcc_s.so:
+
+/usr/lib/libgcc_s.so.1:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/mmintrin.h:
+
+/usr/lib/libm.so:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o:
+
+/usr/lib/libGLdispatch.so.0:
+
+/usr/include/bits/types/__fpos64_t.h:
+
+/usr/lib/libX11.so.6:
+
+/usr/lib/libXdmcp.so.6:
+
+/usr/lib/libc.so.6:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h:
+
+/usr/lib/libstdc++.so.6:
+
+/usr/lib32/libGLdispatch.so.0:
+
+/usr/lib32/libX11.so.6:
+
+CMakeFiles/ShaderStudy.dir/src/glad.c.o:

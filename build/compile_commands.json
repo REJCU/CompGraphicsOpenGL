@@ -1,13 +1,13 @@
 [
 {
   "directory": "/home/rye/c_projects/simpleShaders/build",
-  "command": "/usr/bin/cc  -I/home/rye/c_projects/simpleShaders/include -I/home/rye/c_projects/simpleShaders/external/glfw/include -std=gnu11 -o CMakeFiles/ShaderStudy.dir/src/main.c.o -c /home/rye/c_projects/simpleShaders/src/main.c",
+  "command": "/usr/bin/cc  -I/home/rye/c_projects/simpleShaders/include -I/home/rye/c_projects/simpleShaders/external/glfw/include -I/home/rye/c_projects/simpleShaders/textures -std=gnu11 -o CMakeFiles/ShaderStudy.dir/src/main.c.o -c /home/rye/c_projects/simpleShaders/src/main.c",
   "file": "/home/rye/c_projects/simpleShaders/src/main.c",
   "output": "CMakeFiles/ShaderStudy.dir/src/main.c.o"
 },
 {
   "directory": "/home/rye/c_projects/simpleShaders/build",
-  "command": "/usr/bin/cc  -I/home/rye/c_projects/simpleShaders/include -I/home/rye/c_projects/simpleShaders/external/glfw/include -std=gnu11 -o CMakeFiles/ShaderStudy.dir/src/glad.c.o -c /home/rye/c_projects/simpleShaders/src/glad.c",
+  "command": "/usr/bin/cc  -I/home/rye/c_projects/simpleShaders/include -I/home/rye/c_projects/simpleShaders/external/glfw/include -I/home/rye/c_projects/simpleShaders/textures -std=gnu11 -o CMakeFiles/ShaderStudy.dir/src/glad.c.o -c /home/rye/c_projects/simpleShaders/src/glad.c",
   "file": "/home/rye/c_projects/simpleShaders/src/glad.c",
   "output": "CMakeFiles/ShaderStudy.dir/src/glad.c.o"
 },
