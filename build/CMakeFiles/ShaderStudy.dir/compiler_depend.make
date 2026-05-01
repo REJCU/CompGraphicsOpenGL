@@ -157,6 +157,7 @@ CMakeFiles/ShaderStudy.dir/src/main.c.o: /home/rye/c_projects/simpleShaders/src/
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/mm_malloc.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/mmintrin.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdbool.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/syslimits.h \
@@ -200,6 +201,8 @@ ShaderStudy: /usr/lib/Scrt1.o \
 
 
 CMakeFiles/ShaderStudy.dir/src/main.c.o:
+
+CMakeFiles/ShaderStudy.dir/src/glad.c.o:
 
 /usr/include/stdio.h:
 
@@ -403,8 +406,6 @@ external/glfw/src/libglfw3.a:
 
 /usr/lib/Scrt1.o:
 
-/usr/include/bits/pthread_stack_min.h:
-
 /usr/lib/librt.a:
 
 /usr/include/bits/types/struct_timeval.h:
@@ -412,6 +413,10 @@ external/glfw/src/libglfw3.a:
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/limits.h:
 
 /usr/lib/libmvec.so.1:
+
+/usr/include/bits/pthread_stack_min.h:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdbool.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/xmmintrin.h:
 
@@ -454,5 +459,3 @@ external/glfw/src/libglfw3.a:
 /usr/lib32/libGLdispatch.so.0:
 
 /usr/lib32/libX11.so.6:
-
-CMakeFiles/ShaderStudy.dir/src/glad.c.o:

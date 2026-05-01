@@ -55,4 +55,5 @@ CMakeFiles/ShaderStudy.dir/src/main.c.o: \
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/emmintrin.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/xmmintrin.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/mmintrin.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/mm_malloc.h
+ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/mm_malloc.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdbool.h

@@ -16,6 +16,10 @@ const char *fragmentShaderSource = "#version 330 core\n"
 #include <GLFW/glfw3.h>
 #include <stdio.h>
 #include <stdlib.h>
+#define STB_IMAGE_IMPLEMENTATION
+#include <../textures/stb_image.h>
+#define STB_IMAGE_IMPLEMENTATION
+#include <stdbool.h>
 
 char* readShaderSource(const char* filePath) {
     FILE* file = fopen(filePath, "rb");
@@ -71,15 +75,42 @@ int main() {
     }
 
 // vertex input - normalised device coordinates
+// float vertices[] = {
+ //    0.5f,  0.5f, 0.0f,
+   //  0.5f, -0.5f, 0.0f,
+   // -0.5f, -0.5f, 0.0f,
+    //-0.5f,  0.5f, 0.0f,
+//};
+
+// makes the rectangle 
+//unsigned int indices[] = {
+  //  0 , 1, 3,
+  //  1,  2 ,3
+//};
+
+//float vertices[] = {
+ //    1.0f,  1.0f, 0.0f,  // Top Right
+ //    1.0f, -1.0f, 0.0f,  // Bottom Right
+ //   -1.0f, -1.0f, 0.0f,  // Bottom Left
+ //   -1.0f,  1.0f, 0.0f   // Top Left
+//};
+
+// for textures
+ // for textures
+
 float vertices[] = {
-     0.5f,  0.5f, 0.0f,
-     0.5f, -0.5f, 0.0f,
-    -0.5f, -0.5f, 0.0f,
-    -0.5f,  0.5f,  0.0f
+    // positions          // colors           // texture coords
+     0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
+     0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
+    -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+    -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
+
 };
+
+
 unsigned int indices[] = {
-    0 , 1, 3,
-    1,  2 ,3
+    0, 1, 3,   // First Triangle
+    1, 2, 3    // Second Triangle
 };
 
 
@@ -97,10 +128,19 @@ glBufferData(GL_ARRAY_BUFFER, sizeof(vertices ), vertices, GL_STATIC_DRAW);
 glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-glVertexAttribPointer(0,3,GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+// for shader
+//glVertexAttribPointer(0,3,GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+//glEnableVertexAttribArray(0);
+
+// for textures
+// 3 floats (x,y,z), Stride is 8 (total floats per row), Offset is 0
+glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 glEnableVertexAttribArray(0);
 
-glBindVertexArray(0);
+// 2. Texture Coordinate Attribute (Location 2 - matching your code)
+// 2 floats (u,v), Stride is 8, Offset is 6 (skips x,y,z and r,g,b)
+glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+glEnableVertexAttribArray(2);glBindVertexArray(0);
 
 // for square
 // 1. bind Vertex Array Object
@@ -123,8 +163,8 @@ glBindVertexArray(0);
 //glCompileShader(fragmentShader);
 
 // --- LOAD FROM FILES INSTEAD OF STRINGS ---
-char* vertexSource = readShaderSource("../shaders/shader.vert");
-char* fragmentSource = readShaderSource("../shaders/shader.frag");
+char* vertexSource = readShaderSource("../shaders/texture.vert");
+char* fragmentSource = readShaderSource("../shaders/sampler.frag");
 
 if (vertexSource == NULL || fragmentSource == NULL) {
     printf("Failed to load shader files!\n");
@@ -156,6 +196,61 @@ glLinkProgram(shaderProgram);
 
 glUseProgram(shaderProgram);
 
+// define features - took out of while loop as it called it every single frame
+    int resLoc = glGetUniformLocation(shaderProgram, "u_resolution");
+    int width, height;
+    glfwGetFramebufferSize(window, &width, &height);
+
+    float timeValue = (float)glfwGetTime();
+    int timeLoc = glGetUniformLocation(shaderProgram, "u_time");
+
+    double xpos, ypos;
+    glfwGetCursorPos(window, &xpos, &ypos);
+    int mouseLoc = glGetUniformLocation(shaderProgram, "u_mouse");
+
+
+stbi_set_flip_vertically_on_load(true);
+int texWidth, texHeight, nrChannels;
+unsigned char *data1 = stbi_load("../textures/tux.jpg", &texWidth, &texHeight, &nrChannels, 0); 
+
+if (!data1) {
+    printf("Failed to load texture\n");
+}
+
+unsigned int tex1;
+    glGenTextures(1, &tex1);
+    glBindTexture(GL_TEXTURE_2D, tex1);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data1);
+    glGenerateMipmap(GL_TEXTURE_2D);
+
+    stbi_image_free(data1);
+
+// Second texture
+unsigned int tex2;
+glGenTextures(1, &tex2);
+glBindTexture(GL_TEXTURE_2D, tex2);
+
+int tw2, th2, ch2; 
+unsigned char *data2 = stbi_load("../textures/PNG.png", &tw2, &th2, &ch2, 4);
+if(data2) {
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, tw2, th2, 0, GL_RGBA, GL_UNSIGNED_BYTE, data2);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    stbi_image_free(data2);
+}
+
+
+glActiveTexture(GL_TEXTURE0);
+glBindTexture(GL_TEXTURE_2D, tex1);
+glActiveTexture(GL_TEXTURE1);
+glBindTexture(GL_TEXTURE_2D, tex2);
+
+glBindVertexArray(VAO);
+glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
 
 
 glDeleteShader(vertexShader);
@@ -163,35 +258,37 @@ glDeleteShader(fragmentShader);
 
 
 
-
 // 2. Create the shader objects
-    while (!glfwWindowShouldClose(window)) {
-        
-        proccessInput(window);
+while (!glfwWindowShouldClose(window)) {
+    proccessInput(window);
 
-        //pink
-        //glClearColor(0.9f,0.2f,0.4,1.0f);
         glClearColor(0.0f,0.0f,0.0f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT); 
 
         glUseProgram(shaderProgram);
 
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, tex1);
+        glActiveTexture(GL_TEXTURE1); // Don't forget this!
+        glBindTexture(GL_TEXTURE_2D, tex2);
 
-        int resLoc = glGetUniformLocation(shaderProgram, "u_resolution");
-        glUniform2f(resLoc, 800.0f, 600.0f);
+        // Second texture
+        glUniform1i(glGetUniformLocation(shaderProgram, "tuxTexture"), 0); 
+        glUniform1i(glGetUniformLocation(shaderProgram, "pngTexture"), 1);
 
-        float timeValue = (float)glfwGetTime();
-        int timeLoc = glGetUniformLocation(shaderProgram, "u_time");
-        glUniform1f(timeLoc, timeValue);
-    
         glBindVertexArray(VAO);
 
-        glDrawElements(GL_TRIANGLES, 6,GL_UNSIGNED_INT, 0);
-        //glBindVertexArray(0);
+
+        glUniform1i(glGetUniformLocation(shaderProgram, "inputBuffer"), 0);
+        glUniform2f(resLoc, (float)width, (float)height);
+        glUniform1f(timeLoc, timeValue);
+        glUniform2f(mouseLoc, (float)xpos, (float)ypos);
+    
+        glBindVertexArray(VAO);
+        glDrawElements(GL_TRIANGLES, 6 ,GL_UNSIGNED_INT, 0);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
-
     }
 
     glfwTerminate();
