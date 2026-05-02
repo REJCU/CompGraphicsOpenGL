@@ -116,17 +116,17 @@ glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 //glEnableVertexAttribArray(0);
 
 // for textures
-// 3 floats (x,y,z), Stride is 8 (total floats per row), Offset is 0
+// Position (Location 0)
 glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 glEnableVertexAttribArray(0);
 
-// 2. Texture Coordinate Attribute (Location 2 - matching your code)
-// 2 floats (u,v), Stride is 8, Offset is 6 (skips x,y,z and r,g,b)
-glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-glEnableVertexAttribArray(2);
-glBindVertexArray(0);
+// Color (Location 1)
+glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+glEnableVertexAttribArray(1);
 
-// for square
+// Texture Coords (Location 2)
+glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+glEnableVertexAttribArray(2);// for square
 // 1. bind Vertex Array Object
 
 //unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -194,7 +194,7 @@ glUseProgram(shaderProgram);
 
 stbi_set_flip_vertically_on_load(true);
 int texWidth, texHeight, nrChannels;
-unsigned char *data1 = stbi_load("../textures/tux.jpg", &texWidth, &texHeight, &nrChannels, 0); 
+unsigned char *data1 = stbi_load("../textures/PNG.png", &texWidth, &texHeight, &nrChannels, 0); 
 
 if (!data1) {
     printf("Failed to load texture\n");
@@ -206,14 +206,13 @@ unsigned int tex1;
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data1);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, data1);
     glGenerateMipmap(GL_TEXTURE_2D);
-
     stbi_image_free(data1);
 
 // Second texture
 int tw2, th2, ch2; 
-unsigned char *data2 = stbi_load("../textures/PNG.png", &tw2, &th2, &ch2, 4);
+unsigned char *data2 = stbi_load("../textures/818cVxOk2YL._AC_UF894,1000_QL80_.jpg", &tw2, &th2, &ch2, 4);
 
 if (!data2) {
     printf("Failed to load texture\n");
@@ -230,10 +229,6 @@ unsigned int tex2;
     stbi_image_free(data2);
 
 
-glActiveTexture(GL_TEXTURE0);
-glBindTexture(GL_TEXTURE_2D, tex1);
-glActiveTexture(GL_TEXTURE1);
-glBindTexture(GL_TEXTURE_2D, tex2);
 
 glBindVertexArray(VAO);
 glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -252,6 +247,20 @@ while (!glfwWindowShouldClose(window)) {
 
         glClearColor(0.0f,0.0f,0.0f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT); 
+
+        int resLoc = glGetUniformLocation(shaderProgram, "u_resolution");
+        int width, height;
+        glfwGetFramebufferSize(window, &width, &height);
+
+        float timeValue = (float)glfwGetTime();
+        int timeLoc = glGetUniformLocation(shaderProgram, "u_time");
+
+        double xpos, ypos;
+        glfwGetCursorPos(window, &xpos, &ypos);
+        int mouseLoc = glGetUniformLocation(shaderProgram, "u_mouse");
+
+
+
 
         glUseProgram(shaderProgram);
 
