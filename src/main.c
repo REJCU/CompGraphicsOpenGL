@@ -1,17 +1,3 @@
-const char *vertexShaderSource = "#version 330 core\n"
-    "layout (location = 0) in vec3 aPos;\n"
-    "void main()\n"
-    "{\n"
-    "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-    "}\0";
-
-const char *fragmentShaderSource = "#version 330 core\n"
-    "out vec4 FragColor;\n"
-    "void main()\n"
-    "{\n"
-    "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-    "}\n\0";
-
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <stdio.h>
@@ -96,8 +82,6 @@ int main() {
 //};
 
 // for textures
- // for textures
-
 float vertices[] = {
     // positions          // colors           // texture coords
      0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
@@ -106,7 +90,6 @@ float vertices[] = {
     -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
 
 };
-
 
 unsigned int indices[] = {
     0, 1, 3,   // First Triangle
@@ -140,7 +123,8 @@ glEnableVertexAttribArray(0);
 // 2. Texture Coordinate Attribute (Location 2 - matching your code)
 // 2 floats (u,v), Stride is 8, Offset is 6 (skips x,y,z and r,g,b)
 glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-glEnableVertexAttribArray(2);glBindVertexArray(0);
+glEnableVertexAttribArray(2);
+glBindVertexArray(0);
 
 // for square
 // 1. bind Vertex Array Object
@@ -162,7 +146,6 @@ glEnableVertexAttribArray(2);glBindVertexArray(0);
 //glShaderSource(fragmentShader,1,&fragmentShaderSource,NULL);
 //glCompileShader(fragmentShader);
 
-// --- LOAD FROM FILES INSTEAD OF STRINGS ---
 char* vertexSource = readShaderSource("../shaders/texture.vert");
 char* fragmentSource = readShaderSource("../shaders/sampler.frag");
 
@@ -222,7 +205,6 @@ unsigned int tex1;
     glBindTexture(GL_TEXTURE_2D, tex1);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data1);
     glGenerateMipmap(GL_TEXTURE_2D);
@@ -230,17 +212,22 @@ unsigned int tex1;
     stbi_image_free(data1);
 
 // Second texture
-unsigned int tex2;
-glGenTextures(1, &tex2);
-glBindTexture(GL_TEXTURE_2D, tex2);
-
 int tw2, th2, ch2; 
 unsigned char *data2 = stbi_load("../textures/PNG.png", &tw2, &th2, &ch2, 4);
-if(data2) {
+
+if (!data2) {
+    printf("Failed to load texture\n");
+};
+
+unsigned int tex2;
+    glGenTextures(1, &tex2);
+    glBindTexture(GL_TEXTURE_2D, tex2);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, tw2, th2, 0, GL_RGBA, GL_UNSIGNED_BYTE, data2);
     glGenerateMipmap(GL_TEXTURE_2D);
     stbi_image_free(data2);
-}
 
 
 glActiveTexture(GL_TEXTURE0);
@@ -251,7 +238,8 @@ glBindTexture(GL_TEXTURE_2D, tex2);
 glBindVertexArray(VAO);
 glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
-
+int image1 = glGetUniformLocation(shaderProgram, "image1"); 
+int image2 = glGetUniformLocation(shaderProgram, "image2");
 
 glDeleteShader(vertexShader);
 glDeleteShader(fragmentShader);
@@ -269,20 +257,20 @@ while (!glfwWindowShouldClose(window)) {
 
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, tex1);
-        glActiveTexture(GL_TEXTURE1); // Don't forget this!
+        glActiveTexture(GL_TEXTURE1); 
         glBindTexture(GL_TEXTURE_2D, tex2);
 
         // Second texture
-        glUniform1i(glGetUniformLocation(shaderProgram, "tuxTexture"), 0); 
-        glUniform1i(glGetUniformLocation(shaderProgram, "pngTexture"), 1);
 
         glBindVertexArray(VAO);
-
 
         glUniform1i(glGetUniformLocation(shaderProgram, "inputBuffer"), 0);
         glUniform2f(resLoc, (float)width, (float)height);
         glUniform1f(timeLoc, timeValue);
         glUniform2f(mouseLoc, (float)xpos, (float)ypos);
+
+        glUniform1i(image1, 0); 
+        glUniform1i(image2, 1);
     
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6 ,GL_UNSIGNED_INT, 0);
