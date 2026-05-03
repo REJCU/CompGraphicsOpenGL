@@ -1,5 +1,6 @@
 CMakeFiles/ShaderStudy.dir/src/main.c.o: \
  /home/rye/c_projects/simpleShaders/src/main.c /usr/include/stdc-predef.h \
+ /usr/include/X11/X.h \
  /home/rye/c_projects/simpleShaders/include/glad/glad.h \
  /usr/include/KHR/khrplatform.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h \

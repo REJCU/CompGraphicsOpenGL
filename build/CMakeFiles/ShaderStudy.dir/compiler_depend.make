@@ -75,6 +75,7 @@ CMakeFiles/ShaderStudy.dir/src/main.c.o: /home/rye/c_projects/simpleShaders/src/
   /home/rye/c_projects/simpleShaders/textures/stb_image.h \
   /home/rye/c_projects/simpleShaders/include/glad/glad.h \
   /usr/include/KHR/khrplatform.h \
+  /usr/include/X11/X.h \
   /usr/include/alloca.h \
   /usr/include/assert.h \
   /usr/include/bits/atomic_wide_counter.h \
@@ -204,6 +205,8 @@ CMakeFiles/ShaderStudy.dir/src/main.c.o:
 
 CMakeFiles/ShaderStudy.dir/src/glad.c.o:
 
+/usr/lib32/libxcb.so.1:
+
 /usr/include/stdio.h:
 
 /home/rye/c_projects/simpleShaders/src/glad.c:
@@ -229,8 +232,6 @@ CMakeFiles/ShaderStudy.dir/src/glad.c.o:
 /usr/include/bits/types/struct_timespec.h:
 
 /usr/include/bits/types/struct_FILE.h:
-
-/usr/lib32/libxcb.so.1:
 
 /usr/include/bits/types/locale_t.h:
 
@@ -269,6 +270,8 @@ CMakeFiles/ShaderStudy.dir/src/glad.c.o:
 /usr/include/KHR/khrplatform.h:
 
 /usr/include/bits/types/__FILE.h:
+
+/usr/include/X11/X.h:
 
 external/glfw/src/libglfw3.a:
 

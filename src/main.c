@@ -1,3 +1,4 @@
+#include <X11/X.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <stdio.h>
@@ -6,6 +7,11 @@
 #include <../textures/stb_image.h>
 #define STB_IMAGE_IMPLEMENTATION
 #include <stdbool.h>
+
+const unsigned int HEIGHT = 800;
+const unsigned int WIDTH = 600;
+
+float mixValue = 0.2f;
 
 char* readShaderSource(const char* filePath) {
     FILE* file = fopen(filePath, "rb");
@@ -39,6 +45,7 @@ void proccessInput(GLFWwindow *window)
         glfwSetWindowShouldClose(window, 1); 
 }
 
+
 int main() {
 
     glfwInit(); 
@@ -46,7 +53,7 @@ int main() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-    GLFWwindow* window = glfwCreateWindow(800, 600, "SimpleShader", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(HEIGHT, WIDTH, "SimpleShader", NULL, NULL);
     if (!window) {
         glfwTerminate();
         return -1;
@@ -84,10 +91,10 @@ int main() {
 // for textures
 float vertices[] = {
     // positions          // colors           // texture coords
-     0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
-     0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
+     0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   2.0f, 2.0f,   // top right
+     0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   2.0f, 0.0f,   // bottom right
     -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-    -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
+    -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 2.0f    // top left 
 
 };
 
@@ -238,7 +245,13 @@ int image2 = glGetUniformLocation(shaderProgram, "image2");
 
 glDeleteShader(vertexShader);
 glDeleteShader(fragmentShader);
+// process inputs 
 
+void proccessInput(GLFWwindow *window);
+{
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+            glfwSetWindowShouldClose(window,true);
+}
 
 
 // 2. Create the shader objects
@@ -258,9 +271,6 @@ while (!glfwWindowShouldClose(window)) {
         double xpos, ypos;
         glfwGetCursorPos(window, &xpos, &ypos);
         int mouseLoc = glGetUniformLocation(shaderProgram, "u_mouse");
-
-
-
 
         glUseProgram(shaderProgram);
 
@@ -298,4 +308,6 @@ while (!glfwWindowShouldClose(window)) {
 
     return 0; 
     }
+
+
 
